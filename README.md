@@ -26,7 +26,7 @@ There are a total number of "9 buttons" that are very much self-explanatory if y
 
 #8 Button: RESTART ALL
 
-#8 Button: STOP ALL
+#9 Button: STOP ALL
 
 
 Clone it and check it out.
