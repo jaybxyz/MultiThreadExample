@@ -2,7 +2,7 @@
 
 This project is very simple example that shows how to control multiple threads in Android. 
 
-It is really important to know this concept and get to know how to control multiple threads when you deal with anything related to multi threading architecture, such as network and multimedia.
+It is really important to know how to use these methods "synchronized, wait(), notify(), notifyAll()" when you deal with anything related to multi threading architecture, such as network and multimedia.
 
 # Structure of this Example
 There are two threads (Thread A and Thread B). 
