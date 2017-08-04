@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txt_threadA"
+        android:text="Thread A"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/txt_threadA_numbers"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="120dp"
+        />
+
+    <TextView
+        android:id="@+id/txt_threadB"
+        android:text="Thread B"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/txt_threadB_numbers"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="120dp"
+        />
+
+    <Button
+        android:id="@+id/btn_startAll"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="START ALL"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btn_threadA_pause"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="PAUSE THREAD A"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        />
+
+    <Button
+        android:id="@+id/btn_threadA_resume"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="RESUME THREAD A"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="150dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        />
+
+    <Button
+        android:id="@+id/btn_threadA_stop"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="STOP THREAD A"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        />
+
+    <Button
+        android:id="@+id/btn_threadB_pause"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="PAUSE THREAD B"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="250dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        />
+
+    <Button
+        android:id="@+id/btn_threadB_resume"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="RESUME THREAD B"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="300dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        />
+
+    <Button
+        android:id="@+id/btn_threadB_stop"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="STOP THREAD B"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="350dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        />
+
+
+
+
+    <Button
+        android:id="@+id/btn_restartAll"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="RESTART ALL"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/txt_threadB" />
+
+    <Button
+        android:id="@+id/btn_stopAll"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="STOP ALL"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        />
+
+
+</RelativeLayout>
