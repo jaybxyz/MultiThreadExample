@@ -1,10 +1,49 @@
 # MultiThreadExample
 
-This project is very simple example that shows how to control multiple threads in Android. 
 
-It is really important to know how to use these methods "synchronized, wait(), notify(), notifyAll()" when you deal with anything related to multi threading architecture, such as network and multimedia.
+This project is very basic sample that shows how to control multiple threads using Java in Android. 
 
-# Structure of this Example
+It is really important to know how to use multiple threads; especially when you develop multi-threading architecture, such as multimedia and network. 
+
+This project deals with methods like synchronized, wait(), notify(), notifyAll(). 
+
+
+
+
+
+# What is Multithreading?
+
+
+The process of executing multiple threads simultaneously is known as multithreading.
+
+
+
+
+
+# Why is it important?
+
+
+Multithreaded programs contain two or more threads that can run concurrently and each thread defines a separate path of execution. This means that a single program can perform two or more tasks simultaneously. For example, one thread is writing content on a file at the same time another thread is performing spelling check.
+
+Basically, when you develop a multithreaded program (a program that deals with multiple threads), you have to controll threads well to execute which one executes first and which one executes right after.  
+
+
+
+
+# References that are helpful for me to understand the concept of multi-threading
+
+
+[Java Multithreading Steeplechase: Stopping Threads](https://10kloc.wordpress.com/2013/03/03/java-multithreading-steeplechase-stopping-threads/)
+
+[Multithreading in java with examples](http://beginnersbook.com/2013/03/multithreading-in-java/)
+
+[Java Thread: notify() and wait() examples](http://www.programcreek.com/2009/02/notify-and-wait-example/)
+
+
+
+# Structure of this Project
+
+
 There are two threads (Thread A and Thread B). 
 Each thread has its own while loop that counts numbers infinitely.
 
