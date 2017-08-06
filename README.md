@@ -11,7 +11,7 @@ This project deals with methods like synchronized, wait(), notify(), notifyAll()
 
 
 
-# What is Multithreading?
+## What is Multithreading?
 
 
 The process of executing multiple threads simultaneously is known as multithreading.
@@ -20,7 +20,7 @@ The process of executing multiple threads simultaneously is known as multithread
 
 
 
-# Why is it important?
+## Why is it important?
 
 
 Multithreaded programs contain two or more threads that can run concurrently and each thread defines a separate path of execution. This means that a single program can perform two or more tasks simultaneously. For example, one thread is writing content on a file at the same time another thread is performing spelling check.
@@ -30,7 +30,7 @@ Basically, when you develop a multithreaded program (a program that deals with m
 
 
 
-# References that are helpful for me to understand the concept of multi-threading
+## References that are helpful for me to understand the concept of multi-threading
 
 
 [Java Multithreading Steeplechase: Stopping Threads](https://10kloc.wordpress.com/2013/03/03/java-multithreading-steeplechase-stopping-threads/)
@@ -41,7 +41,7 @@ Basically, when you develop a multithreaded program (a program that deals with m
 
 
 
-# Structure of this Project
+## Structure of this Project
 
 
 There are two threads (Thread A and Thread B). 
@@ -71,7 +71,8 @@ There are a total number of "9 buttons" that are very much self-explanatory if y
 Clone it and check it out.
 
 
-# LICENSE
+## LICENSE
+
 ```
 
 The MIT License (MIT)
