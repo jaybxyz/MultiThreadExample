@@ -69,7 +69,7 @@ There are a total number of "9 buttons" that are very much self-explanatory if y
 #9 Button: STOP ALL
 
 
-Clone it and check it out.
+**Clone it and check it out! I hope this helps you to know how to use threads in Android**
 
 
 ## LICENSE
