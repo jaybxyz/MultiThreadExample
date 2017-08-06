@@ -41,8 +41,9 @@ Basically, when you develop a multithreaded program (a program that deals with m
 
 
 
-## Structure of this Project
+## Structure of this Project (Screenshot of .xml below)
 
+![screnshoot of .xml preview](https://user-images.githubusercontent.com/20435620/29004633-d69219f0-7b05-11e7-999b-352f417c2892.jpg)
 
 There are two threads (Thread A and Thread B). 
 Each thread has its own while loop that counts numbers infinitely.
