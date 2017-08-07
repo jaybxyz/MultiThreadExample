@@ -5,10 +5,7 @@ This project is very basic sample that shows how to control multiple threads usi
 
 It is really important to know how to use multiple threads; especially when you develop multi-threading architecture, such as multimedia and network. 
 
-This project deals with methods like synchronized, wait(), notify(), notifyAll(). 
-
-
-
+This project provides complete control over multithreaded program, which can be be suspended, resumed, or stopped completely based on your events.
 
 
 ## What is Multithreading?
