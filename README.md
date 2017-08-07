@@ -36,7 +36,7 @@ Basically, when you develop a multithreaded program (a program that deals with m
 
 [Java Thread: notify() and wait() examples](http://www.programcreek.com/2009/02/notify-and-wait-example/)
 
-
+[Udemy Free Tutorials](https://www.udemy.com/java-multithreading/learn/v4/?couponCode=FREE)
 
 ## Structure of this Project (Screenshot of .xml below)
 
