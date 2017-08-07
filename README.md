@@ -40,31 +40,33 @@ Basically, when you develop a multithreaded program (a program that deals with m
 
 ## Structure of this Project (Screenshot of .xml below)
 
-![xml_preview](https://user-images.githubusercontent.com/20435620/29009109-40bb975c-7b5b-11e7-9585-27b23e4dfcb2.PNG)
+![xml_preview](https://user-images.githubusercontent.com/20435620/29010086-bf4d77a4-7b63-11e7-9fbe-a7b8e94fc6b9.PNG)
 
 
 There are two threads (Thread A and Thread B). 
 Each thread has its own while loop that counts numbers infinitely.
 
-There are a total number of "9 buttons" that are very much self-explanatory if you take a look at the .xml file.
+There are a total number of 10 buttons that are very much self-explanatory if you take a look at the preview above.
 
 #1 Button: START ALL
 
-#2 Button: PAUSE THREAD A
+#2 Button: STOP ALL
 
-#3 Button: RESUME THREAD A
+#3 Button: PAUSE THREAD A
 
-#4 Button: STOP THREAD A
+#4 Button: RESUME THREAD A
 
-#5 Button: PAUSE THREAD B 
+#5 Button: STOP THREAD A
 
-#6 Button: RESUME THREAD B
+#6 Button: PAUSE THREAD B 
 
-#7 Button:  STOP THREAD B
+#7 Button: RESUME THREAD B
 
-#8 Button: RESTART ALL
+#8 Button:  STOP THREAD B
 
-#9 Button: PAUSE ALL
+#9 Button: RESTART ALL
+
+#10 Button: PAUSE ALL
 
 
 **Clone it and check it out! I hope this helps you to know how to use threads in Android**
