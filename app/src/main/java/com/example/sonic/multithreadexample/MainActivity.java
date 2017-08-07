@@ -18,8 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
     // [START ALL, RESTART ALL, STOP ALL]
     private Button mStartAll;
-    private Button mRestartAll;
     private Button mStopAll;
+    private Button mResumeAll;
+    private Button mPauseAll;
 
     // Thread A Buttons [PAUSE, RESUME, STOP]
     private Button mPause_A;
@@ -31,13 +32,17 @@ public class MainActivity extends AppCompatActivity {
     private Button mResume_B;
     private Button mStop_B;
 
+    // Thread A and B
     private Thread th_A;
     private Thread th_B;
 
-    private Object mPauseLock;
+    // Thread Control Variables
+    private Object mPauseLockA;
+    private Object mPauseLockB;
     private boolean mPausedA;
     private boolean mPausedB;
-    private boolean mFinished;
+    private boolean mFinishedA;
+    private boolean mFinishedB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
         // Initialize [START ALL, RESTART ALL, STOP ALL]
         mStartAll = (Button)findViewById(R.id.btn_startAll);
         mStopAll = (Button)findViewById(R.id.btn_stopAll);
-        mRestartAll = (Button)findViewById(R.id.btn_restartAll);
+        mPauseAll = (Button)findViewById(R.id.btn_pauseAll);
+        mResumeAll = (Button)findViewById(R.id.btn_resumeAll);
 
         // Button OnClickListener
         mPause_A.setOnClickListener(mOnClickListener);
@@ -71,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
         mStop_B.setOnClickListener(mOnClickListener);
         mStartAll.setOnClickListener(mOnClickListener);
         mStopAll.setOnClickListener(mOnClickListener);
-        mRestartAll.setOnClickListener(mOnClickListener);
+        mPauseAll.setOnClickListener(mOnClickListener);
+        mResumeAll.setOnClickListener(mOnClickListener);
 
         th_A = new threadA();
         th_B = new threadB();
@@ -82,15 +89,27 @@ public class MainActivity extends AppCompatActivity {
     *  Call this on Pause Thread A
     * */
     public void pauseThreadA() {
-        synchronized (mPauseLock) {
+        synchronized (mPauseLockA) {
             mPausedA = true;
         }
     }
 
+    /*
+    *  Call this on Resume Thread A
+    * */
     public void resumeThreadA(){
-        synchronized (mPauseLock) {
+        synchronized (mPauseLockA) {
             mPausedA = false;
-            mPauseLock.notify();
+            mPauseLockA.notify();
+        }
+    }
+
+    /*
+    *  Call this on Stop Thread A
+    * */
+    public void stopThreadA() {
+        synchronized (mPauseLockA) {
+            mFinishedA = true;
         }
     }
 
@@ -98,71 +117,95 @@ public class MainActivity extends AppCompatActivity {
     *  Call this on Pause Thread B
     * */
     public void pauseThreadB() {
-        synchronized (mPauseLock) {
+        synchronized (mPauseLockB) {
             mPausedB = true;
         }
     }
 
+    /*
+    *  Call this on Resume Thread B
+    * */
     public void resumeThreadB(){
-        synchronized (mPauseLock) {
+        synchronized (mPauseLockB) {
             mPausedB = false;
-            mPauseLock.notify();
+            mPauseLockB.notify();
         }
     }
 
-
-    public void stopThreadA() {
-        synchronized (mPauseLock) {
-            mPausedA = false;
-
-        }
-    }
+    /*
+    *  Call this on Stop Thread B
+    * */
     public void stopThreadB() {
-
+        synchronized (mPauseLockB) {
+            mFinishedB = true;
+        }
     }
 
-
-
+    /*
+    * Call this on Start All Threads
+    * */
     public void startAll() {
         th_A.start();
         th_B.start();
     }
 
-    public void restartAll(){
 
-        if (th_A!=null){
-            Log.d(TAG,"th_A"+th_A);
+    /*
+    *  Call this on Pause Thread A
+    * */
+    public void stopAll() {
+        synchronized (mPauseLockA) {
+            mFinishedA = true;
         }
-        if (th_B!=null){
-            Log.d(TAG,"th_B"+th_B);
+        synchronized (mPauseLockB) {
+            mFinishedB = true;
         }
-
-//        synchronized (mPauseLock) {
-//            mPausedA = false;
-//            mPausedB = false;
-//            mPauseLock.notifyAll();
-//        }
     }
 
+    /*
+    * Call this on Pause All Threads
+    * */
+    public void pauseAll(){
+        synchronized (mPauseLockA) {
+            mPausedA = true;
+        }
+        synchronized (mPauseLockB) {
+            mPausedB = true;
+        }
+    }
 
+    /*
+    * Call this on Resume All Threads
+    * */
+    public void resumeAll(){
+        synchronized (mPauseLockA) {
+            mPausedA = false;
+            mPauseLockA.notifyAll();
+        }
+        synchronized (mPauseLockB) {
+            mPausedB = false;
+            mPauseLockB.notifyAll();
+        }
+    }
 
-
-
+    /**
+    * Thread A
+    * */
     class threadA extends Thread {
 
         public threadA() {
-            mPauseLock = new Object();
+            mPauseLockA = new Object();
             mPausedA = false;
-            mFinished = false;
+            mFinishedA = false;
         }
 
         public void run() {
-            while(!mFinished) {
+            while(!mFinishedA) {
                 try {
-                    synchronized (mPauseLock){
+                    synchronized (mPauseLockA){
                         while (mPausedA){
                             try {
-                                mPauseLock.wait();
+                                mPauseLockA.wait();
                             }catch (InterruptedException e){
                                 e.getStackTrace();
                             }
@@ -182,25 +225,37 @@ public class MainActivity extends AppCompatActivity {
                     Log.e("SampleJavaThread","Exception in thread.",ex);
                 }
             }
+
+            //  Stop Thread A reset to 0
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    threadA.setText(String.valueOf(0));
+                }
+            });
+
         }
     }
 
+    /**
+    * Thread B
+    * */
     class threadB extends Thread {
 
         public threadB() {
-            mPauseLock = new Object();
+            mPauseLockB = new Object();
             mPausedB = false;
-            mFinished = false;
+            mFinishedB = false;
         }
 
         public void run() {
-            while(!mFinished) {
+            while(!mFinishedB) {
                 try {
 
-                    synchronized (mPauseLock){
+                    synchronized (mPauseLockB){
                         while (mPausedB){
                             try {
-                                mPauseLock.wait();
+                                mPauseLockB.wait();
                             }catch (InterruptedException e){
                                 e.getStackTrace();
                             }
@@ -221,6 +276,15 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
+
+            //  Stop Thread B reset to 0
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    threadB.setText(String.valueOf(0));
+                }
+            });
+
         }
     }
 
@@ -244,8 +308,8 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.btn_threadA_stop: // STOP A
 
-                    //stopThreadA();
-                    //threadA.setText(String.valueOf(0));
+                    stopThreadA();
+
                     Log.i(TAG,"Thread A STOP");
                     break;
 
@@ -265,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.btn_threadB_stop: // STOP B
 
-                    //stopThreadB();
+                    stopThreadB();
 
                     Log.i(TAG,"Thread B STOP");
                     break;
@@ -279,14 +343,21 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.btn_stopAll:
 
-
+                    stopAll();
 
                     Log.i(TAG,"Stop All Threads");
                     break;
 
-                case R.id.btn_restartAll:
+                case R.id.btn_pauseAll:
 
-                    restartAll();
+                    pauseAll();
+
+                    Log.i(TAG,"Stop All Threads");
+                    break;
+
+                case R.id.btn_resumeAll:
+
+                    resumeAll();
 
                     Log.i(TAG,"Restart All Threads");
                     break;
@@ -296,6 +367,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-
-
 }
