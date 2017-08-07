@@ -1,7 +1,7 @@
 # MultiThreadExample
 
 
-This project is very basic sample that shows how to control multiple threads using Java in Android. 
+This project is very basic sample that shows how to write multi-threaded codes using Java in Android. 
 
 It is really important to know how to use multiple threads; especially when you develop multi-threading architecture, such as multimedia and network. 
 
